@@ -46,17 +46,50 @@ class PasswordManager:
         self.button_show_passwords = tk.Button(content_frame, text="Show Passwords", command=self.show_passwords)
 
         # Grid layout for content
-        self.label_website.grid(row=0, column=0, sticky=tk.E, pady=5)
-        self.label_username.grid(row=1, column=0, sticky=tk.E, pady=5)
-        self.label_password.grid(row=2, column=0, sticky=tk.E, pady=5)
+        self.label_website.grid(row=0,
+                                column=0,
+                                sticky=tk.E,
+                                pady=5)
 
-        self.entry_website.grid(row=0, column=1, padx=10, pady=5)
-        self.entry_username.grid(row=1, column=1, padx=10, pady=5)
-        self.entry_password.grid(row=2, column=1, padx=10, pady=5)
+        self.label_username.grid(row=1,
+                                 column=0,
+                                 sticky=tk.E,
+                                 pady=5)
 
-        self.label_search.grid(row=3, column=0, sticky=tk.E, pady=5)
-        self.entry_search.grid(row=3, column=1, padx=10, pady=5)
-        self.button_search.grid(row=3, column=2, padx=10, pady=5)
+        self.label_password.grid(row=2,
+                                 column=0,
+                                 sticky=tk.E,
+                                 pady=5)
+
+        self.entry_website.grid(row=0,
+                                column=1,
+                                padx=10,
+                                pady=5)
+
+        self.entry_username.grid(row=1,
+                                 column=1,
+                                 padx=10,
+                                 pady=5)
+
+        self.entry_password.grid(row=2,
+                                 column=1,
+                                 padx=10,
+                                 pady=5)
+
+        self.label_search.grid(row=3,
+                               column=0,
+                               sticky=tk.E,
+                               pady=5)
+
+        self.entry_search.grid(row=3,
+                               column=1,
+                               padx=10,
+                               pady=5)
+
+        self.button_search.grid(row=3,
+                                column=2,
+                                padx=10,
+                                pady=5)
 
         self.button_save.grid(row=4, column=1, pady=10)
         self.button_show_passwords.grid(row=5, column=1)
@@ -143,7 +176,9 @@ class PasswordManager:
                 # Decrypt the password before displaying
                 decrypted_password = self.decrypt_password(entry[2])
                 text_widget.insert(tk.END,
-                                   f"Website: {entry[0]}\nUsername: {entry[1]}\nPassword: {decrypted_password}\n\n")
+                                   f"Website: {entry[0]}\n")
+                text_widget.insert(tk.END, f"Username: {entry[1]}\n")
+                text_widget.insert(tk.END, f"Password: {decrypted_password}\n\n")
         else:
             messagebox.showinfo("No Passwords", "No passwords stored yet.")
 
@@ -176,7 +211,9 @@ class PasswordManager:
                 # Decrypt the password before displaying
                 decrypted_password = self.decrypt_password(entry[2])
                 text_widget.insert(tk.END,
-                                   f"Website: {entry[0]}\nUsername: {entry[1]}\nPassword: {decrypted_password}\n\n")
+                                   f"Website: {entry[0]}\n")
+                text_widget.insert(tk.END, f"Username: {entry[1]}\n")
+                text_widget.insert(tk.END, f"Password: {decrypted_password}\n\n")
         else:
             messagebox.showinfo("No Matches", f"No passwords match the search query: {search_query}.")
 
